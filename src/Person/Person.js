@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Person = () =>{
-    return <p>this is the person funcion created manually to express random Numbers: {Math.floor(Math.random()*30)}</p>
+const Person = (props) =>{
+    return <p>Hi, my name is {props.name} and i am {props.age} years old!</p>
 }
 
 export default Person;
