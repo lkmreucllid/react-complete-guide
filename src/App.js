@@ -45,8 +45,30 @@ class App extends Component {
       font: 'inherit',
       padding: '8px',
       cusor:'pointer'
-
     };
+
+    let personStr = null;
+    if(this.state.showPerson){
+      personStr = (
+        <div>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click={this.switchNameHandler.bind(this.switchNameHandler,'Ben 10ison')}
+          changed = {this.nameChangedHandler}
+          >My Hobbies are reading and sleeping
+        </Person>
+        <Person
+        name={this.state.persons[2].name} age={this.state.persons[2].age}
+        />
+      </div> 
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hi, i am a React App</h1>
@@ -54,26 +76,7 @@ class App extends Component {
         <button
         style={styleStr}
          onClick={this.togglePersonHandler}>Switch Name</button>
-       {
-        this.state.showPerson === true ? 
-          <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-            />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this.switchNameHandler,'Ben 10ison')}
-            changed = {this.nameChangedHandler}
-            >My Hobbies are reading and sleeping
-          </Person>
-          <Person
-          name={this.state.persons[2].name} age={this.state.persons[2].age}
-          />
-        </div> : null
-
-       }
+       {personStr}
       </div>
     );
     //return React.createElement('div',null,'h1','Hi i\'m the new React App');
