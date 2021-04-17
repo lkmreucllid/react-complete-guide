@@ -51,20 +51,10 @@ class App extends Component {
     if(this.state.showPerson){
       personStr = (
         <div>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this.switchNameHandler,'Ben 10ison')}
-          changed = {this.nameChangedHandler}
-          >My Hobbies are reading and sleeping
-        </Person>
-        <Person
-        name={this.state.persons[2].name} age={this.state.persons[2].age}
-        />
+          {this.state.persons.map(person => {
+            <Person name={person.name} age={person.age}
+              />
+          })}
       </div> 
       );
     }
@@ -75,7 +65,7 @@ class App extends Component {
         <p>This is actually Working!</p>
         <button
         style={styleStr}
-         onClick={this.togglePersonHandler}>Switch Name</button>
+         onClick={this.togglePersonHandler}>Toggle Persons</button>
        {personStr}
       </div>
     );
